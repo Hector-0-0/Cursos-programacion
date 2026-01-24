@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Control Selector</title>
+</head>
+<body>
+    <h4>Colores de semáforo</h4>
+    <form>
+        <p>
+            <select id="select1" onchange="cambiarColor()">
+                <option value="puede continuar">Verde</option>
+                <option value="tenga precaucion">Amarillo</option>
+                <option value="debe detenerse">Rojo</option>
+            </select>
+        </p>
+        <p>Índice seleccionado: <input type="text" id="text1"></p>
+        <p>Color seleccionado: <input type="text" id="text2"></p>
+        <p>Indicación: <input type="text" id="text3"></p>
+    </form>
+
+    <script>
+        function cambiarColor() {
+            let seleccion = document.getElementById("select1");
+            
+            // Acceso a la propiedad de la opción elegida
+            document.getElementById("text2").value = seleccion.options[seleccion.selectedIndex].text;
+            document.getElementById("text1").value = seleccion.selectedIndex;
+            document.getElementById("text3").value = seleccion.options[seleccion.selectedIndex].value;
+        }
+    </script>
+</body>
+</html>

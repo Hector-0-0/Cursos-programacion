@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario 2</title>
+</head>
+<body>
+    <h4>Acceso de usuarios</h4>
+    <form>
+        Ingrese usuario: <br>
+        <input type="text" id="usuario"><br><br>
+        Ingrese clave: <br>
+        <input type="password" id="clave"><br><br>
+        <input type="button" value="Confirmar" onclick="verificar()">
+    </form>
+
+    <script>
+        let control = 0; // Contador de intentos
+        let contrasenia = 'acceso01';
+
+        function verificar() {
+            let clave = document.getElementById("clave").value;
+
+            if (clave === contrasenia && clave !== "") {
+                alert("Contraseña correcta. Acceso permitido.");
+                window.open("http://www.google.com");
+            } else {
+                alert("Contraseña incorrecta. Acceso denegado.");
+                control++;
+                alert("Intento número: " + control);
+                
+                // Bloqueo del sistema tras 3 intentos fallidos
+                if (control >= 3) {
+                    alert("Ha superado el número de intentos permitidos.");
+                    document.getElementById("clave").disabled = true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
