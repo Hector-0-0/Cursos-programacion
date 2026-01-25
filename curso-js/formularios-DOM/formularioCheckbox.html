@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Checkbox</title>
 </head>
 <body>
@@ -15,16 +14,22 @@
         <input type="checkbox" id="check5" value="C++"> C++ <br>
         <input type="button" value="Enviar" onclick="seleccion()">
     </form>
+
     <script>
-        function seleccion(){
-            let cantidad=0;
-            if(document.getElementById("check1").checked) cantidad++;
-            if(document.getElementById("check2").checked) cantidad++;
-            if(document.getElementById("check3").checked) cantidad++;
-            if(document.getElementById("check4").checked) cantidad++;
-            if(document.getElementById("check5").checked) cantidad++;
-            alert("Has seleccionado " + cantidad + " lenguajes de programacion.");
-        }
+    /*
+    ARCHIVO: formularioCheckbox.html
+    TEMA: Validación de Checkboxes
+    Uso de la propiedad .checked para verificar estados booleanos.
+    */
+    function seleccion() {
+        let cantidad = 0;
+        if (document.getElementById("check1").checked) cantidad++;
+        if (document.getElementById("check2").checked) cantidad++;
+        if (document.getElementById("check3").checked) cantidad++;
+        if (document.getElementById("check4").checked) cantidad++;
+        if (document.getElementById("check5").checked) cantidad++;
+        alert("Has seleccionado " + cantidad + " lenguajes de programacion.");
+    }
     </script>
 </body>
 </html>

@@ -20,14 +20,23 @@
     </form>
 
     <script>
-        function cambiarColor() {
-            let seleccion = document.getElementById("select1");
-            
-            // Acceso a la propiedad de la opción elegida
-            document.getElementById("text2").value = seleccion.options[seleccion.selectedIndex].text;
-            document.getElementById("text1").value = seleccion.selectedIndex;
-            document.getElementById("text3").value = seleccion.options[seleccion.selectedIndex].value;
-        }
+    /*
+    ARCHIVO: formularioControlSelector.html
+    TEMA: El objeto Select y sus propiedades
+    En este ejemplo se utilizan:
+    - Evento 'onchange' para detectar cambios en la lista.
+    - .selectedIndex para obtener la posición numérica.
+    - .options[].text para obtener el nombre visible.
+    - .options[].value para obtener el valor interno.
+    */
+    function cambiarColor() {
+        let seleccion = document.getElementById("select1");
+
+        // Acceso a la propiedad de la opción elegida
+        document.getElementById("text2").value = seleccion.options[seleccion.selectedIndex].text;
+        document.getElementById("text1").value = seleccion.selectedIndex;
+        document.getElementById("text3").value = seleccion.options[seleccion.selectedIndex].value;
+    }
     </script>
 </body>
 </html>

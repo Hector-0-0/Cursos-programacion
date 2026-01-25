@@ -15,27 +15,35 @@
     </form>
 
     <script>
-        let control = 0; // Contador de intentos
-        let contrasenia = 'acceso01';
+    /*
+    ARCHIVO: formularioTexto.html
+    TEMA: Validación de formularios y Bloqueo de controles
+    En este ejemplo se utilizan:
+    - Comparación de strings (clave === contrasenia).
+    - Operador AND (&&) y NOT EQUAL (!==).
+    - Bloqueo de input (.disabled = true) tras 3 intentos fallidos.
+    */
+    let control = 0; // Contador de intentos
+    let contrasenia = 'acceso01';
 
-        function verificar() {
-            let clave = document.getElementById("clave").value;
+    function verificar() {
+        let clave = document.getElementById("clave").value;
 
-            if (clave === contrasenia && clave !== "") {
-                alert("Contraseña correcta. Acceso permitido.");
-                window.open("http://www.google.com");
-            } else {
-                alert("Contraseña incorrecta. Acceso denegado.");
-                control++;
-                alert("Intento número: " + control);
-                
-                // Bloqueo del sistema tras 3 intentos fallidos
-                if (control >= 3) {
-                    alert("Ha superado el número de intentos permitidos.");
-                    document.getElementById("clave").disabled = true;
-                }
+        if (clave === contrasenia && clave !== "") {
+            alert("Contraseña correcta. Acceso permitido.");
+            window.open("http://www.google.com");
+        } else {
+            alert("Contraseña incorrecta. Acceso denegado.");
+            control++;
+            alert("Intento número: " + control);
+
+            // Bloqueo del sistema tras 3 intentos fallidos
+            if (control >= 3) {
+                alert("Ha superado el número de intentos permitidos.");
+                document.getElementById("clave").disabled = true;
             }
         }
+    }
     </script>
 </body>
 </html>

@@ -2,33 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Radio Button</title>
 </head>
 <body>
     <h4>Seleccione disponibilidad de horario:</h4>
     <form>
-        <input type="radio" id="radio1" name="horario">Mañana<br>
-        <input type="radio" id="radio2" name="horario">Tarde<br>
-        <input type="radio" id="radio3" name="horario">Noche<br>
-        <input type="radio" id="radio4" name="horario">Indisponible<br>
-        <br><br>
+        <input type="radio" id="radio1" name="horario"> Mañana<br>
+        <input type="radio" id="radio2" name="horario"> Tarde<br>
+        <input type="radio" id="radio3" name="horario"> Noche<br>
+        <input type="radio" id="radio4" name="horario"> Indisponible<br><br>
         <input type="button" value="Enviar" onclick="seleccion()">
     </form>
+
     <script>
-        function seleccion() {
-            if(document.getElementById("radio1").checked) {
-                alert("Has seleccionado: Mañana");
-            } else if(document.getElementById("radio2").checked) {
-                alert("Has seleccionado: Tarde");
-            } else if(document.getElementById("radio3").checked) {
-                alert("Has seleccionado: Noche");
-            } else if(document.getElementById("radio4").checked) {
-                alert("Has seleccionado: Indisponible");
-            } else {
-                alert("No has seleccionado ninguna opción");
-            }
+    /*
+    ARCHIVO: formularioRadioButton.html
+    TEMA: Selección con Radio Buttons
+    Evaluación de opciones exclusivas mediante .checked.
+    */
+    function seleccion() {
+        if (document.getElementById("radio1").checked) {
+            alert("Has seleccionado: Mañana");
+        } else if (document.getElementById("radio2").checked) {
+            alert("Has seleccionado: Tarde");
+        } else if (document.getElementById("radio3").checked) {
+            alert("Has seleccionado: Noche");
+        } else if (document.getElementById("radio4").checked) {
+            alert("Has seleccionado: Indisponible");
+        } else {
+            alert("No has seleccionado ninguna opción");
         }
+    }
     </script>
 </body>
 </html>

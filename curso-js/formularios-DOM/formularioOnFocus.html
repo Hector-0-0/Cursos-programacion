@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario OnFocus</title>
-
 </head>
 <body>
-    <h4>Ingrese sus datos: </h4>
+    <h4>Ingrese sus datos:</h4>
     <form>
         Nombre<br>
         <input type="text" id="nombre" onfocus="vaciar(this)" value="nombre"><br><br>
@@ -15,13 +13,19 @@
         <input type="text" id="edad" onfocus="vaciar(this)" value="edad"><br><br>
         <input type="button" value="Ingresar" onclick="verificar()">
     </form>
+
     <script>
-        function vaciar(control){
-            control.value = '';
-        }
-        function verificar(){
-            alert("Datos confirmados");
-        }
+    /*
+    ARCHIVO: formularioOnFocus.html
+    TEMA: Referencias con 'this'
+    Se utiliza el parámetro 'control' para referenciar el elemento actual.
+    */
+    function vaciar(control) {
+        control.value = '';
+    }
+    function verificar() {
+        alert("Datos confirmados");
+    }
     </script>
 </body>
 </html>

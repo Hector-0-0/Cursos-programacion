@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario TextArea</title>
 </head>
 <body>
@@ -11,19 +10,24 @@
         <p><textarea id="comentarios" rows="20" cols="40"></textarea></p>
         <input type="button" value="Enviar" onclick="comentar()">
     </form>
+
     <script>
-        function comentar(){
-            if(document.getElementById("comentarios").value.length != 0){
-                if(document.getElementById("comentarios").value.length >= 100){
-                    alert("Su comentario es demasiado largo. Por favor, reduzcalo a menos de 100 caracteres.");
-                }
-                else{
-                    alert("Gracias por su comentario.");
-                }
+    /*
+    ARCHIVO: formularioTextArea.html
+    TEMA: Validación de longitud de texto
+    Se valida si el campo está vacío o si excede los 100 caracteres.
+    */
+    function comentar() {
+        if (document.getElementById("comentarios").value.length != 0) {
+            if (document.getElementById("comentarios").value.length >= 100) {
+                alert("Su comentario es demasiado largo. Por favor, reduzcalo a menos de 100 caracteres.");
             } else {
-                alert("No has escrito ningun comentario.");
+                alert("Gracias por su comentario.");
             }
+        } else {
+            alert("No has escrito ningun comentario.");
         }
+    }
     </script>
 </body>
 </html>
