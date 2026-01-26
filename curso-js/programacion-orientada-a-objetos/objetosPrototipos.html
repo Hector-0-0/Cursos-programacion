@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos y Prototipos</title>
+</head>
+<body>
+    <script>
+        /*
+        ARCHIVO: objetosConstructores.html
+        TEMA: Funciones Constructoras y el operador 'new'
+        En este ejemplo se utilizan:
+        - Funciones constructoras: Para definir una estructura base (plantilla).
+        - Palabra clave 'this': Para asignar valores a las propiedades del nuevo objeto.
+        - Operador 'new': Para crear instancias específicas basadas en la función.
+        */
+
+        // Definición de la función constructora "Libro"
+        function Libro(titulo, autor, canPaginas) {
+            // 'this' hace referencia al objeto que se está creando en ese momento
+            this.titulo = titulo;
+            this.autor = autor;
+            this.canPaginas = canPaginas;
+        }
+
+        // Creamos una instancia (un objeto real) llamado libro1
+        let libro1 = new Libro("El Quijote", "Cervantes", 500);
+
+        // Ejemplo de cómo acceder a los datos creados
+        console.log("Título del libro: " + libro1.titulo);
+        console.log("Autor: " + libro1.autor);
+        console.log("Páginas: " + libro1.canPaginas);
+
+        /* DATO CURIOSO: 
+        A diferencia de los objetos literales, las funciones constructoras
+        te permiten crear cientos de libros rápidamente sin repetir código.
+        */
+    </script>
+</body>
+</html>

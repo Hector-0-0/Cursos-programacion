@@ -7,9 +7,23 @@
 </head>
 <body>
     <script>
-        let perro={nombre:"Mack"};
-        let perro1=Object.create(perro);
+    /*
+    ARCHIVO: prototipos.html
+    TEMA: Programación Orientada a Objetos - Prototipos
+    En este ejemplo se utilizan:
+    - Literales de objeto: Para crear el objeto base 'perro'.
+    - Object.create(): Para crear un nuevo objeto ('perro1') que hereda 
+      las propiedades del prototipo especificado.
+    */
+    
+    // Definición de un objeto literal
+    let perro = {nombre: "Mack"};
+    
+    // Creación de un objeto basado en el prototipo de 'perro'
+    let perro1 = Object.create(perro);
 
+    // Muestra en consola para verificar la herencia
+    console.log(perro1.nombre); 
     </script>
 </body>
 </html>
