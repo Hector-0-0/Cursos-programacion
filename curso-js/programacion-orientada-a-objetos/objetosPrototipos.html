@@ -8,33 +8,40 @@
 <body>
     <script>
         /*
-        ARCHIVO: objetosConstructores.html
-        TEMA: Funciones Constructoras y el operador 'new'
-        En este ejemplo se utilizan:
-        - Funciones constructoras: Para definir una estructura base (plantilla).
-        - Palabra clave 'this': Para asignar valores a las propiedades del nuevo objeto.
-        - Operador 'new': Para crear instancias específicas basadas en la función.
+        ARCHIVO: objetosPrototipos.html
+        TEMA: Métodos en el Prototype
+        
+        PASOS REALIZADOS:
+        1. Definir el molde (Función Constructora).
+        2. Añadir un método al prototipo (Ahorro de memoria).
+        3. Instanciar y ejecutar.
         */
 
-        // Definición de la función constructora "Libro"
+        // 1. Definición de la función constructora "Libro"
         function Libro(titulo, autor, canPaginas) {
-            // 'this' hace referencia al objeto que se está creando en ese momento
             this.titulo = titulo;
             this.autor = autor;
             this.canPaginas = canPaginas;
         }
 
-        // Creamos una instancia (un objeto real) llamado libro1
+        // 2. AGREGAR MÉTODO AL PROTOTIPO
+        // De esta forma, el método no se crea dentro de cada objeto,
+        // sino que todos los libros "miran" hacia este único método.
+        Libro.prototype.resumen = function() {
+            return `El libro "${this.titulo}" fue escrito por ${this.autor} y tiene ${this.canPaginas} páginas.`;
+        };
+
+        // 3. Crear instancias
         let libro1 = new Libro("El Quijote", "Cervantes", 500);
+        let libro2 = new Libro("Cien años de soledad", "García Márquez", 400);
 
-        // Ejemplo de cómo acceder a los datos creados
-        console.log("Título del libro: " + libro1.titulo);
-        console.log("Autor: " + libro1.autor);
-        console.log("Páginas: " + libro1.canPaginas);
+        // 4. Ejecutar el método heredado del prototipo
+        console.log(libro1.resumen());
+        console.log(libro2.resumen());
 
-        /* DATO CURIOSO: 
-        A diferencia de los objetos literales, las funciones constructoras
-        te permiten crear cientos de libros rápidamente sin repetir código.
+        /* NOTA PARA GITHUB:
+        Si inspeccionas 'libro1' en la consola, verás que 'resumen' no está
+        en el primer nivel del objeto, sino dentro de [[Prototype]].
         */
     </script>
 </body>

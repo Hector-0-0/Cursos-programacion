@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subclases y Herencia</title>
+</head>
+<body>
+    <script>
+        /*
+        ARCHIVO: subclases.html
+        TEMA: Herencia con 'extends' y 'super'
+        Conceptos clave:
+        1. extends: Establece que una clase es hija de otra.
+        2. super(): Llama al constructor del padre para inicializar 
+           las propiedades heredadas (nombre y apellido).
+        3. Especialización: La subclase añade sus propias propiedades (posicion).
+        */
+
+        // Clase Padre (Base)
+        class Persona {
+            constructor(nombre, apellido){
+                this.nombre = nombre;
+                this.apellido = apellido;
+            }
+
+            saludar() {
+                return `Hola, soy ${this.nombre} ${this.apellido}`;
+            }
+        }
+
+        // Clase Hija (Subclase)
+        class Futbolista extends Persona {
+            constructor(nombre, apellido, posicion){
+                // super DEBE ir antes de usar 'this'
+                super(nombre, apellido); 
+                this.posicion = posicion;
+            }
+
+            presentarse() {
+                // Podemos usar métodos del padre y propiedades propias
+                console.log(`${this.saludar()} y juego de ${this.posicion}`);
+            }
+        }
+
+        // Creación de una instancia de la subclase
+        let jugador1 = new Futbolista("Lionel", "Messi", "Delantero");
+        
+        // Verificación
+        jugador1.presentarse();
+        console.log(jugador1);
+    </script>
+</body>
+</html>
