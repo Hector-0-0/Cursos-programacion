@@ -1,0 +1,14 @@
+{
+    "nombre": "Juan Pérez",
+    "edad": 30,
+    "estudiante": false,
+    "direccion": {
+        "calle": "Calle Falsa 123",
+        "ciudad": "Ciudad Ejemplo",
+        "pais": "País Ejemplo"
+    },
+    "telefonos": [
+        "123-456-7890",
+        "098-765-4321"
+    ]
+}

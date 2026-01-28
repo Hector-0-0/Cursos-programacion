@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX y JSON: Peticiones Asíncronas</title>
+</head>
+<body>
+    <div id="nombre"></div>
+
+    <script>
+        /*
+        ARCHIVO: comunicacionJSON.html
+        TEMA: Consumo de datos JSON con XMLHttpRequest (AJAX)
+        
+        CONCEPTOS CLAVE DE PETICIONES (MÉTODOS HTTP):
+        - GET:    Obtener información del servidor.
+        - POST:   Enviar información nueva al servidor.
+        - PUT:    Actualizar información existente.
+        - DELETE: Eliminar información.
+        */
+
+        let datosJason;
+        
+        // 1. Instancia del objeto para gestionar la comunicación
+        let xhr = new XMLHttpRequest();
+
+        // 2. Configuración de la petición
+        // Argumentos: (Método, URL/Archivo, Asíncrono [true/false])
+        xhr.open('GET', 'introduccionJSON.json', true);
+
+        // 3. Definimos el tipo de respuesta para que JS la parsee automáticamente
+        xhr.responseType = 'json';
+
+        // 4. Manejo de la respuesta mediante el evento 'onload'
+        xhr.onload = function() {
+            /* CÓDIGOS DE ESTADO HTTP (Status Codes):
+               - 200: OK. Respuesta completa y exitosa.
+               - 201: Created. Elemento creado con éxito.
+               - 204: No Content. Respuesta vacía.
+               - 400: Bad Request. Solicitud mal formulada.
+               - 401: Unauthorized. No tienes permiso (falta autenticación).
+               - 404: Not Found. El archivo o recurso no existe.
+            */
+            
+            if (xhr.status === 200) {
+                // Asignamos la respuesta a nuestra variable local
+                datosJason = xhr.response;
+
+                // Acceso a los datos y manipulación del DOM
+                let elementoTexto = document.getElementById('nombre');
+                
+                // Nota: 'nombre' debe existir como clave dentro de introduccionJSON.json
+                elementoTexto.textContent = datosJason.nombre; 
+                
+                console.log("Datos cargados con éxito:", datosJason);
+            }
+            else {
+                console.error("Error en la carga. Código de estado:", xhr.status);
+            }
+        };
+
+        // 5. Envío de la petición
+        xhr.send();
+
+    </script>
+</body>
+</html>

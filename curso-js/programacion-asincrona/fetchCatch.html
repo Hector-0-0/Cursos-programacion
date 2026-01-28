@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lectura de JSON con Fetch y Catch</title>
+</head>
+<body>
+    <div id="nombre"></div>
+    <script>
+        /*
+        ARCHIVO: fetchCatch.html
+        TEMA: Consumo de APIs y JSON con la API Fetch
+        
+        ¿POR QUÉ USAR FETCH?
+        1. Sintaxis más limpia basada en Promesas (.then).
+        2. No requiere configurar eventos manuales como 'onload' o 'onreadystatechange'.
+        3. Facilita el manejo de errores mediante .catch().
+        */
+
+        let datosJason;
+
+        // 1. Iniciamos la petición hacia el archivo local o API
+        fetch("introduccionJSON.json")
+            // 2. Primer .then: Se recibe la respuesta (Response)
+            // Evaluamos si la respuesta es correcta (status 200) antes de procesar
+            .then(res => {
+                if (!res.ok) {
+                    // Si el servidor responde pero con un error (ej. 404), lanzamos una excepción
+                    throw new Error("Error en la petición: " + res.status);
+                }
+                // Convertimos el cuerpo de la respuesta a JSON (esto devuelve otra promesa)
+                return res.json();
+            })
+            // 3. Segundo .then: Aquí ya recibimos los datos parseados como objeto JS
+            .then((salida) => {
+                datosJason = salida;
+
+                // 4. Manipulación del DOM para mostrar el resultado
+                let elementoTexto = document.getElementById('nombre');
+                elementoTexto.textContent = datosJason.nombre;
+
+                console.log("Datos cargados con Fetch:", datosJason);
+            })
+            // 5. MANEJO DE ERRORES CON .CATCH
+            // Se ejecuta si hay fallos de red, errores de sintaxis o si lanzamos un Error manualmente
+            .catch(error => {
+                console.error("Hubo un problema con el fetch:", error);
+            });
+    </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /*
-ARCHIVO: poo.js
+ARCHIVO: objetosClasesMetodos.js
 TEMA: Programación Orientada a Objetos y Objetos Literales
 En este ejemplo se comparan dos formas de manejar datos:
 1. Objeto Literal: Para estructuras únicas y simples.
