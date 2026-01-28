@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario 1</title>
+</head>
+<body>
+    <h4>Botón de incrementar</h4>
+    <form>
+        <input type="button" onclick="incrementar()" value="incrementar">
+    </form>
+
+    <script>
+    /*
+    ARCHIVO: formularioBoton.html
+    TEMA: Variables globales y Contadores
+    En este ejemplo se utilizan:
+    - Variable 'contador' definida fuera de la función para mantener su valor.
+    - Operador de incremento (++) para sumar de uno en uno.
+    - Función alert() para mostrar el progreso.
+    */
+    let contador = 0;
+
+    function incrementar() {
+        contador++; // Incrementa el valor en 1
+        alert("Valor: " + contador);
+    }
+    </script>
+</body>
+</html>

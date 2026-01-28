@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="nombre"></div>
-
+    <h4>Consumo de datos JSON con XMLHttpRequest (AJAX)</h4>
     <script>
         /*
         ARCHIVO: comunicacionJSON.html
@@ -20,7 +20,7 @@
         - DELETE: Eliminar información.
         */
 
-        let datosJason;
+        let datosJSON;
         
         // 1. Instancia del objeto para gestionar la comunicación
         let xhr = new XMLHttpRequest();
@@ -45,15 +45,15 @@
             
             if (xhr.status === 200) {
                 // Asignamos la respuesta a nuestra variable local
-                datosJason = xhr.response;
+                datosJSON = xhr.response;
 
                 // Acceso a los datos y manipulación del DOM
                 let elementoTexto = document.getElementById('nombre');
                 
                 // Nota: 'nombre' debe existir como clave dentro de introduccionJSON.json
-                elementoTexto.textContent = datosJason.nombre; 
+                elementoTexto.textContent = datosJSON.nombre; 
                 
-                console.log("Datos cargados con éxito:", datosJason);
+                console.log("Datos cargados con éxito:", datosJSON);
             }
             else {
                 console.error("Error en la carga. Código de estado:", xhr.status);

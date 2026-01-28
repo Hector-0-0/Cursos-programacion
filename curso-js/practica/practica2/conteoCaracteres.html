@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conteo caracteres</title>
+</head>
+<body>
+    <p><textarea id="texto" rows="10" cols="35" maxlength="140"></textarea></p>
+    <p>Caracteres disponibles: <span id="cantidad">20</span></p>
+
+    <script>
+    /*
+    ARCHIVO: conteoCaracteres.html
+    TEMA: Eventos de teclado y manipulación del DOM
+    En este ejemplo se utilizan:
+    - Evento 'keyup' para detectar pulsaciones.
+    - Propiedad .value.length para medir texto.
+    - Manipulación de atributos (disabled).
+    - Uso de innerHTML para actualizar la interfaz.
+    */
+    document.getElementById("texto").addEventListener("keyup", caracteres);
+
+    function caracteres() {
+        let cant = document.getElementById("texto").value.length;
+        let disponibles = 20 - parseInt(cant);
+        document.getElementById("cantidad").innerHTML = disponibles;
+        
+        if (disponibles <= 0) {
+            alert("Has alcanzado el máximo de caracteres");
+            document.getElementById("texto").disabled = true;
+        }
+    }
+    </script>
+</body>
+</html>
