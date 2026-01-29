@@ -1,0 +1,287 @@
+Código para no tener problemas al agregar el padding:
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+Estructura de css:
+p {
+    color: blue;
+    font size: 20px;
+}
+
+p --> selector
+color, font size --> propiedad
+px --> unidad
+
+Colores: 
+se puede encontrar en el panel de desarrollador al inspeccionar en chrome
+hsla(parametro1, parametro2, parametro3, transparencia(0-1))
+rgba()
+
+Especificidad:
+con especificidad se puede saber que valores serán tomados en cuenta por el navegador
+clases: menor relevancia que el id
+<etiqueta class="nombre-de-la-clase">
+	contenido
+</etiqueta>
+.nombre-de-la-clase {
+	css
+}
+id: se puede usar uno por pagina
+<etiqueta id="nombre-del-id">
+	contenido
+</etiqueta>
+#nombre-del-id {
+	css
+}
+también hay pseudo selectores: 
+:hover --> nos ayuda a poder poner estilo generalmente a enlaces, este hover lo que hace es darle un estilo cuando el puntero esta flotando sobre el enlace
+selector-idéntico:ndh-child(numero-que identifica a que hijo se dirige) --> es el que nos ayuda a poder darle un estilo a hijos de un mismo padre
+selector-idéntico:last-of-type --> es el que nos ayuda a poder editar el ultimo elemento de una clase
+también hay selectores de atributos:
+etiqueta[atributo] {
+	css
+}
+también hay selectores acotados:
+se aplica a todos los elementos que tengan esa etiqueta menos a los que tengan ese atributo
+etiqueta:not([atributo]){
+	css
+}
+
+Box model:
+todo en css se es una caja y depende de 4 cosas (contenido, padding(o relleno), margin, border)
+contenido: texto que se tiene en la caja
+padding: espacio entre el limite del contenido hacia las orillas de ese elemento
+margin: espacio entre el limite del elemento hacia afuera
+notar que en algunos casos no habría ningún problema de cual usar, esto pasa cuando el color de fondo no es importante
+cuando se llama a las propiedades también se puede especificar hacia que lado se tendrá el espaciado (top, right, bottom, left)
+padding: 50px 20px 30px 40px (version corta, aplica con margin también) *si se repite dos elementos de dos a dos también se puede color solo una vez ambos
+en el caso de border se tiene como parámetros width(ancho), color, top-style (solid)
+border-top: 1px solid #e1e1e1 (version corta)
+al colocar un auto como parámetro, toma únicamente lo del width y deja "flotando" lo que colocamos como auto
+
+Display:
+cada elemento tiene un display por defecto y se tiene que usar cuando se desee cambiar
+los divs y las imágenes tiene el mismo display(block), los enlaces (inline)
+block: se acomodan hacia abajo
+inline: se acomodan hacia la derecha
+inline-block: lo hace de manera que se le pueda dar una altura, ancho o margin a un elemento inline lo que no se puede hacer en el inline
+
+Imágenes como background en css:
+se tiene que usar una etiqueta como el div para poder colocar una clase, generalmente en estos casos se usa la "hero"
+.hero {
+	background-image: url(../images/principal.jpg);
+	height: 550px;
+}
+ya que es únicamente una etiqueta se le tiene que pasar parámetros como altura y anchura
+con los dos puntos (../) salimos del directorio donde se encuentra nuestra hoja de estilos
+
+Flexbox:
+para poder alinear (vertical o horizontal)  
+para poder alinear o usar flexbox se tiene que aplicar flexbox al elemento padre inmediato (unidimensional)
+generalmente se utiliza cuando se tiene contenedores
+
+Css Grid o Css Grid Layout:
+para poder ubicar un contenido en un area definida (bidimensional)
+terminología:
+Grid Lines (definen los límites)
+Grid Tracks (espacios entre líneas)
+Grid Cells (intersecciones de tracks)
+Grid Areas (agrupaciones de cells)
+se utiliza para el layout (diseño de la pagina) y se usan dentro de contenedores
+
+Fuentes:
+para poder aplicar distintas tipos de fuentes en nuestra pagina nos apoyaremos en google fonts para poder buscar todos los tipos de fuentes que necesitemos
+ahi en la pagina nos mostrara la forma de usarlas y nos brindara el link para poder agregarlo al head
+
+Unidades:
+algunas propiedades de css requieren de unidades
+la unidad tiene que estar junto al valor sin espacio
+las unidades puedes ser absolutas o relativas
+absolutas: pixeles cm m
+relativas: em, rem, vh, vw y porcentajes
+las unidades relativas se adaptan a diferentes revoluciones
+porcentajes: un porcentaje del tamaño del padre inmediato
+em: n em veces el valor del tamaño del padre inmediato
+vw: asigna un porcentaje a cada letra por unidad de pantalla
+rem: se basa en el tamaño de fuente del elemento raíz del documento (el elemento <html>) que por defecto 1rem=16px
+generalmente se usa el rem y la calculadora de rems
+se recomienda colocar en la etiqueta html
+fond-size: 62.5%; asi de esa forma 1rem=10px
+
+Estilos css:
+BEM (block element modifier): metodología de nomenclatura estructurada
+/* Block */
+.card {
+    background: white;
+    padding: 20px;
+}
+
+/* Elements */
+.card__title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card__content {
+    color: #666;
+}
+
+.card__button {
+    background: blue;
+    color: white;
+}
+
+/* Modifiers */
+.card--featured {
+    border: 2px solid gold;
+}
+
+.card__button--disabled {
+    opacity: 0.5;
+}
+
+Modulos:
+tiene un ámbito local, evitando conflictos de nombres
+/* Button.module.css */
+.button {
+    background: blue;
+    color: white;
+}
+
+.primary {
+    background: green;
+}
+
+Utilidades:
+clases pequeñas de una sola responsabilidad
+/* Espaciado */
+.m-0 { margin: 0; }
+.m-1 { margin: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Display */
+.block { display: block; }
+.flex { display: flex; }
+.hidden { display: none; }
+
+/* Texto */
+.text-center { text-align: center; }
+.font-bold { font-weight: bold; }
+.text-lg { font-size: 1.125rem; }
+
+/* Colores */
+.bg-blue { background-color: blue; }
+.text-white { color: white; }
+
+/* Layout */
+.justify-center { justify-content: center; }
+.items-center { align-items: center; }
+
+SMACSS:
+organiza CSS en 5 categorías específicas
+/* 1. BASE - Elementos HTML básicos */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. LAYOUT - Estructura principal */
+.l-header {
+    background: #333;
+    height: 60px;
+}
+
+.l-sidebar {
+    width: 250px;
+    float: left;
+}
+
+.l-main {
+    margin-left: 250px;
+}
+
+/* 3. MODULES - Componentes reutilizables */
+.navigation {
+    list-style: none;
+}
+
+.navigation li {
+    display: inline-block;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+}
+
+/* 4. STATE - Estados de elementos */
+.is-hidden {
+    display: none;
+}
+
+.is-active {
+    color: blue;
+}
+
+.is-loading {
+    opacity: 0.5;
+}
+
+/* 5. THEME - Variaciones visuales */
+.theme-dark .card {
+    background: #333;
+    color: white;
+}
+
+Propiedades:
+font-size --> modifica el tamaño de la fuente
+color --> color de el texto
+text-transform: uppercase --> modifica todo a mayúscula
+text-transform: lowercase --> modifica todo a minúscula
+background-color --> color de fondo
+width --> ancho
+height --> largo
+box-sizing --> nos ayuda a poder definir el tamaño de las cajas
+box-sizing: border-box --> el tamaño de las cajas es valor dado por el width
+box-sizing: content-box --> actúa por defecto
+text-aling --> ayuda a poder ubicar nuestro texto (center, justify,...)
+text-decoration: none --> para los enlaces no tengan el subrayado
+max-width --> establece el ancho máximo que puede tener un elemento
+background-repeat: no-repeat --> para que la imagen de fondo no se repita
+background-size: cover --> llegue a cubrir toda la anchura posible la imagen de fondo
+display: flex --> nos ayuda a poder aplicar propiedades de flexbox y por defecto alinea a los elementos de izquierda a derecha
+flex-direction --> nos ayuda a poder modificar la dirección en la que se alinean los elementos (row, column, row-reverse, column-reverse)
+justify-content --> ayuda a poder alinear el contenido *para row lo hace de manera horizontal **para column lo hace de manera vertical
+aling-item --> ayuda a poder alinear el contenido *para row lo hace de manera vertical **para column lo hace de manera horizontal
+display: grid --> nos ayuda a poder aplicar propiedades de css grid
+grid-template-columns --> crear columnas para css grid
+grid-template-rows --> crea filas para css grid *se puede pasar parametros de tipo fraccion 1fr, 2fr, 3,fr esto nos ayuda a poder dar una determinada area con proporciones 
+grid-columns-start/end --> para poder seleccionar una linea del contenedor grid que inicie/termine nuestro contenido
+repeat(numero de veces, valor) --> para poder repetir valores con la misma unidad
+ma-witdh: 100% --> ayuda a poder ubicar todo el contenido dentro de las areas
+column-gap --> ayuda a poder separar columnas en un contenedor grid 
+row-gap --> ayuda a poder separar las filas en un contenedor grid
+gap --> ayuda a poder separa tanto de manera horizontal y vertical
+border-radius --> le da un redondeo en las esquinas *puede usarse para poner en distintas direcciones (top, left, right, bottom)
+font-style --> nos ayuda a poder cambiar el estilo de la fuente (normal(roman) o cursiva(italic))
+font-family --> elegir la fuente que usamos para el texto
+font-wight --> el grosor de la fuente
+font-optical-sizing --> ajusta automáticamente el grosor de los trazos, el espaciado y otros detalles tipográficos según el tamaño del texto para mejorar la legibilidad
+flex-basis --> ajusta que porcentaje/tamaño se va a utilizar como base al inicio de un flexbox
+linear-gradient(parametro1, parametro2, ...) -->  crea un gradiente lineal entre dos o más colores en una dirección específica *linear-gradient(direction, color1, color2, ...)
+background-position --> ayuda a ubicar la imagen de fondo
+transition --> genera trancisiones y recive tres parametros *transition: "lo que se va a animar" "duracion de la animacion" "animacion" *esto no solo funcion con botones, tambien se puede aplicar a imagines 
+transform: scale --> ayuda a dar una escala a la imagen de la original *si es 1 es igual a la imagen, para que sea menor tiene que ser .8 .4 y si desea ser mayor se le coloca 1.3 1.4
+object-fit --> ayuda a poder posicionar una imagen para que esta no se desproporcione al momento de redimensionar al contenedor de esta
+flex --> le da una proporcion a los elementos asignados con flexbox al momento de alinear
+repeat(autofit, minmax(25rem,1fr)) --> minmax es una función de css que mide un rango, mientras sea menor a 25rem entonces se autocompleta (auto-fit)
+list-style --> redefine la viñeta que enumera una lista
+cursor --> ayuda a poder cambiar el aspecto del cursor 
+
+Contenido css
+https://docs.google.com/document/d/1AtSMwsTD24tk7bKcH94soMvE_0gwmVyU/edit?fbclid=IwY2xjawMHcFdleHRuA2FlbQIxMQBicmlkETFLSEVCSk1NTzZnZkVsOG10AR5nLAZ1GCUxHNk6W_ivlWsN4rwIdhjqK6H3DG9wsCGruQlJH08DH9okzXmdMg_aem_fyV5prbGRsgxSIubdhuN3w&tab=t.0
