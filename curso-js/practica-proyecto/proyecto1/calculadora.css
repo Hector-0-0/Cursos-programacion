@@ -11,9 +11,9 @@ html {
     font-family: 'Courier New', Courier, monospace;
 }
 
-.caja-header, .caja-footer {
+.caja-header {
     width: 100%;
-    height: 80px;
+    height: 150px;
     background-color: #f0f0f0;
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@ html {
     height: 400px;
     border: 2px solid #7c8052;
     margin: 0 auto;
-    margin-top: 20px;
+    margin: 20px auto;
     border-radius: 10px;
 }
 
@@ -71,4 +71,11 @@ html {
     cursor: pointer;
 }
 
-
+.caja-footer {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
