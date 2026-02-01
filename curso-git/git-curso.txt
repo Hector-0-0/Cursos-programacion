@@ -1,0 +1,106 @@
+*system  --> aplica para todos los usuarios 
+*global  --> aplica para todos los repositorios
+*local  --> para cada repositorio
+
+*Configuraciones iniciales*
+git config --global user.name "nombre"  --> asigna de manera global el nombre
+git config --global user.email "email"  --> asigna de manera global el email
+git config --list  --> lista de configuraciones
+git config --global --list  --> lista de configuraciones globales
+git config --global core.editor "code --wait"  --> para emplear vs code como editor de codigo y además el wait sirve para que espere a cerrar para que guarde cada cambio 
+git config --global color.ui true --> de esa forma, las salidas en pantalla van a ser mas coloridas 
+git config --global core.autocrlf true/input  --> para evitar errores de compatibilidad con el \r\n o el \n (windows/mac)
+
+*Comandos*
+cd :d  --> cambiar al equipo d
+cd directorio  --> cambia el directorio a trabajar
+cd ../  --> retrocede al directorio anterior
+mkdir directorio  --> crea un directorio
+rmdir directorio  --> elimina un directorio
+touch  --> crea archivos 
+git init  --> inicia un repositorio
+ls  --> sirve para enlistar los documentos en el directorio donde se encuentra el repositorio
+ls -a  --> sirve para  ver hasta archivos ocultos
+cd .git  --> para poder acceder al directorio ,git
+git add documento  --> sirve para poder subir al stage
+git add .  --> sirve para poder subir todos los documentos al stage
+git status  --> sirve para poder ver los documentos que están modificados o en el stage 
+git rm --cached documento  --> sirve para bajar del stage
+git commit -m "mensaje del commit"  --> sirve para realizar commits
+git commit  --> sirve para poder subir un mensaje mas largo y detallado
+git commit -a  documento  --> sirve para poder agregar al stage area y al mismo tiempo hacer el commit
+git restore documento
+--> No mueve HEAD ni cambia commits
+--> Solo restaura archivos en working directory o staging
+git checkout document
+--> Cambia de rama O restaura archivos (hace dos cosas diferentes)
+--> Para archivos, funciona similar a git restore
+git reset --hard documento
+--> Mueve el puntero de la rama (HEAD) a otro commit
+--> Modifica el historial de commits
+--> Descarta cambios en staging y working directory
+git show  --> ayuda a ver los cambios entre el commit actual y el anterior (no en el stage ni en el area de preparación)
+git restore --staged documento  --> para poder bajar del stage al documento
+git diff --staged  --> ayuda a poder ver las diferencias entre todos los archivos que están en el area de stage y el ultimo commit
+git log  --> nos brinda información sobre los commits como el identificador
+git log --online  --> información de los commits pero en una linea
+git config --global core.abbrev (cantidad de dígitos para el identificador)  --> cambia la cantidad de dígitos para el identificador
+git diff ide1 ide2  --> muestra la diferencia entre ambos archivos en los commits
+git diff --name-only ide1 ide2  --> muestra la diferencia entre los nombres de los documentos
+git diff -word-diff ide1 ide2  --> ayuda a poder ver los cambios linea por linea en una palabra
+git commit --amend  --> ayuda a poder corregir el ultimo commit (ya sea agregando nuevo contenido o cambiando el mensaje del commit)
+git rebase -i head~(cantidad de commits para volver a atrás)  --> para poder modificar commits anteriores al ultimo (te posiciona al commit que deseas editar (edit) luego subir las modificaciones al stage para terminar haciendo el git commit --ammend)
+*pick - mantener el commit tal cual
+reword - cambiar el mensaje del commit
+edit - pausar para modificar el commit
+squash - combinar con el commit anterior
+fixup - como squash pero descarta el mensaje
+drop - eliminar el commit
+git rebase -i ide  --> para poder modificar desde un commit en especifico
+git rebase --continue  --> ayuda a poder rehacer luego de hacer el git rebase -i head~(cantidad de commits para volver a atrás) 
+git rebase --abort  --> para que se cancele la operación de rebase
+git reset  --soft  ide  --> cambia la posición del puntero para colocarlo en el commit indicado, los archivos de los commits "eliminados" se colocaran en el area de stage con la ultima version, no cambia nada en el area de trabajo
+git reset  --soft  head~(cantidad de commits para volver a atrás)  --> funciona de la misma manera que el anterior *lo archivos que que estaban en los commits "eliminados" tambien se pueden sobreescribir colocandose en el area de stage
+git reset  --mixed ide  --> al igual que el anterior este cambia la posición del head y los commits "eliminados" no se colocan en el area de staging, los archivos en este también se pueden sobreescribir pero con la ventaja de que puedes seleccionar los que deseas subir o no
+--mixed + git add . = --soft
+git branch  --> para poder ver todas las ramas creadas
+git branch (nombre de la rama)  --> para poder crear una rama
+git switch  --> para poder movernos entre ramas
+git checkout -b (nombre de la rama)  --> para poder crear una rama y ubicarse en la rama
+git switch -c (nombre de la rama)  --> para poder crear una rama y ubicarse en la rama
+git branch -d (nombre de la rama)  --> para eliminar una rama (no estar posicionado en la rama)
+git branch -m (nombre de la rama) (nuevo nombre de la rama)  --> cambia el nombre de la rama (no estar ubicado en la rama)
+git branch -m (nuevo nombre de la rama)  --> cambiar el nombre de la rama (estar ubicado)
+git merge  --> para poder unir dos ramas (ubicandonos en la rama a unir)
+git reflog  --> historial completo de commits
+
+*archivo .gitignore*
+git ls-tree -r --name-only ide  --> para poder ver los archivos y directorios dentro de un commit
+.gitignore
+*sufijo  --> para poder ignorar todos los documentos que terminen con el sufijo
+!documento  --> para poder no ignorar (git le da seguimiento)
+nombre-del-directorio/  --> para poder ignorar todos los documentos que esta dentro del directorio
+!nombre-del-directorio/documento  --> git da seguimiento al documento en especifico
+*si git ya le da seguimiento a un documento/archivo, a pesar de usar el .gitignore igual el documento tendrá seguimiento
+**gitignore-global sirve para poder aplicarlo en cada uno de los archivos
+
+*alias personales*
+git config --global alias.nombre del alias "comando"
+git s  --> status corto alias.s=status --short
+git lg  --> Log gráfico bonito alias.lg=log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+
+convención: kebab-case
+
+*repositorio remoto*
+git clone (https) --> para poder clonar un repositorio remoto
+git push/origin master  --> para poder empujar los cambios que tenemos en el repositorio local al repositorio remoto
+git fetch  --> baja los combios del repositorio remoto sin unirlos a la rama pricipal local 
+git pull/origin master  --> git fetch + git merge
+git pull -u origin master  --> para que apunte a la rama master directamente
+git switch --detach origin/main  --> apunta a un commit en especifico remoto que nos dio el fetch
+git stash  --> guarda temporalmente los cambios hechos
+git stash pop  --> aplica los cambios guardados en la rama en la cual estas situado
+git remote -v  --> para poder crear el objeto "repositorio remoto"
+
+*proximos pasos*
+cherry-pick, milestones, tags, rebase, squash, estrategias de branching, submodulos, hooks, bisect, gitflow, githubflow
