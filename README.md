@@ -12,8 +12,6 @@ Actualmente, el repositorio está organizado por carpetas según el lenguaje:
 * **📁 curso-sql/mysql**: Bases de datos, consultas y diseño relacional.
 * **📁 curso-git**: Control de versiones y manejo de repositorios.
 
----
-
 ## 🛠️ Tecnologías
 
 * **Lenguajes:** JavaScript, HTML, CSS y SQL.
