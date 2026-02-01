@@ -1,5 +1,3 @@
-#SELECCIONAR SIN EL USE
-#EL WHERE + AND AYUDA A PODER COLOCAR MAS RESTRICCIONES
-SELECT * FROM PRIMERA.PERSONA
-WHERE DNI < 1234566 AND NOMBRE <> "Jerry";
-
+-- Seleccionar registros con filtrado por DNI y nombre
+SELECT * FROM primera.persona 
+WHERE dni < 1234566 AND nombre <> 'Jerry';
