@@ -1,0 +1,168 @@
+/*
+ARCHIVO: guia_estilos.css
+TEMA: Fundamentos de CSS, Box Model, Flexbox, Grid y Metodologías
+Este archivo contiene la base teórica y práctica para el diseño web moderno.
+*/
+
+/* --- 1. RESET Y BOX SIZING --- */
+/* Configuración para que el padding y border no afecten el ancho total definido */
+html {
+    box-sizing: border-box;
+}
+
+/* Herencia universal del box-sizing */
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* ESTRUCTURA BÁSICA:
+p { color: blue; } 
+p --> Selector
+color --> Propiedad
+blue --> Valor
+*/
+
+/* --- 2. ESPECIFICIDAD Y SELECTORES --- */
+
+/* ID (#): Alta relevancia, único por página */
+#nombre-del-id {
+    color: red;
+}
+
+/* Clases (.): Reutilizables, relevancia media */
+.nombre-de-la-clase {
+    background-color: #f4f4f4;
+}
+
+/* Pseudo-selectores y Atributos */
+a:hover { color: green; } /* Estilo al pasar el puntero */
+li:nth-child(2) { color: orange; } /* Selecciona el segundo hijo */
+p:last-of-type { margin-bottom: 0; } /* Último párrafo de su tipo */
+
+/* Selectores de atributos y negación */
+div[atributo] { border: 1px solid black; }
+div:not([atributo]) { opacity: 0.5; }
+
+/* --- 3. BOX MODEL (MODELO DE CAJA) --- */
+/* Todo en CSS es una caja: Contenido, Padding, Border y Margin */
+.caja-ejemplo {
+    /* Padding: Espacio interno (Contenido <-> Borde) */
+    padding: 50px 20px 30px 40px; /* Top, Right, Bottom, Left */
+    
+    /* Margin: Espacio externo (Borde <-> Otros elementos) */
+    margin: 20px auto; /* Centra horizontalmente si hay width definido */
+    
+    /* Border: width, style, color */
+    border: 1px solid #e1e1e1;
+    border-radius: 8px; /* Redondeo de esquinas */
+}
+
+
+
+/* --- 4. DISPLAY Y LAYOUT --- */
+
+/* Block: Ocupa todo el ancho, uno debajo de otro (div, p, h1, img) */
+.bloque { display: block; }
+
+/* Inline: Solo el ancho de su contenido, uno al lado de otro (a, span) */
+.en-linea { display: inline; }
+
+/* Inline-block: Elementos en línea que aceptan width, height y margin */
+.mixto { display: inline-block; }
+
+/* FLEXBOX: Unidimensional (Alinear en filas O columnas) */
+.contenedor-flex {
+    display: flex;
+    flex-direction: row; /* Dirección: row, column */
+    justify-content: center; /* Alineación horizontal (en row) */
+    align-items: center;    /* Alineación vertical (en row) */
+    gap: 20px; /* Espaciado entre hijos */
+}
+
+/* CSS GRID: Bidimensional (Filas Y Columnas para Layouts complejos) */
+.contenedor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+    grid-template-rows: auto;
+    gap: 1rem;
+}
+
+
+
+/* --- 5. UNIDADES Y FUENTES --- */
+/* Absolutas: px (píxeles)
+Relativas: 
+- rem: Basado en la raíz (html). Si html { font-size: 62.5% } -> 1rem = 10px
+- em: Basado en el tamaño del padre.
+- vw/vh: Porcentaje del ancho/alto de la pantalla.
+*/
+
+/* --- 6. METODOLOGÍAS Y ORGANIZACIÓN --- */
+
+/* BEM (Block__Element--Modifier) */
+.card { }                /* Bloque */
+.card__title { }         /* Elemento */
+.card--featured { }      /* Modificador */
+
+/* SMACSS: Base, Layout, Modules, State, Theme */
+.is-active { color: blue; } /* State */
+.l-main { width: 80%; }     /* Layout */
+
+/* --- 7. IMÁGENES Y EFECTOS --- */
+.hero {
+    background-image: url('../images/principal.jpg'); /* ../ sale de la carpeta actual */
+    background-size: cover; /* Cubre todo el espacio */
+    background-position: center;
+    height: 550px;
+}
+
+.imagen-proporcionada {
+    object-fit: cover; /* Evita que la imagen se deforme al redimensionar */
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+.imagen-proporcionada:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+    cursor: pointer; /* Cambia el icono del mouse */
+}
+
+/* --- 8. UTILIDADES RÁPIDAS (Utility Classes) --- */
+.text-center { text-align: center; }
+.m-0 { margin: 0; }
+.p-2 { padding: 0.5rem; }
+.hidden { display: none; }
+
+/* --- 9. RECURSOS ADICIONALES PARA COMPLETAR EL ARCHIVO --- */
+
+/* RESPONSIVE DESIGN: Adaptación a dispositivos */
+@media (max-width: 480px) {
+    .hero { height: 300px; } /* Imagen más pequeña en móviles */
+}
+
+/* VARIABLES: Centralización de estilos */
+:root {
+    --primario: #3498db;
+    --secundario: #2ecc71;
+    --blanco: #ffffff;
+}
+
+/* PSEUDO-ELEMENTOS: Decoración extra sin HTML */
+.titulo::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--primario);
+}
+
+/* ACCESIBILIDAD: Ocultar elementos pero mantenerlos para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
