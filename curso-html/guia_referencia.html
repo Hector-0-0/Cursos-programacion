@@ -1,0 +1,119 @@
+# 🌐 Guía de Referencia Rápida: HTML5
+
+Esta guía contiene los atajos, etiquetas esenciales y estructuras de formularios necesarias para el desarrollo web moderno.
+
+---
+
+## ⚡ Atajos de Emmet (VS Code)
+Usa estos comandos seguidos de la tecla `Tab` para generar código instantáneo:
+
+* `!` : Genera la estructura básica de un documento HTML5.
+* `a` : Crea una etiqueta de enlace `<a href=""></a>`.
+* `.clase` : Crea un `<div>` con una clase específica. Ej: `.contenedor` -> `<div class="contenedor"></div>`.
+* `#id` : Crea un `<div>` con un ID específico.
+
+---
+
+## 🏗️ Estructura Básica del Documento
+
+| Etiqueta | Descripción |
+| :--- | :--- |
+| `<!DOCTYPE html>` | Define que el documento utiliza el estándar **HTML5**. |
+| `<html lang="es">` | Raíz del documento. El atributo `lang` ayuda a los buscadores y lectores de pantalla. |
+| `<head>` | Contenedor de metadatos (título, scripts, estilos) no visibles. |
+| `<meta charset="UTF-8">` | Asegura que se muestren correctamente tildes y eñes. |
+| `<title>` | Nombre que aparece en la pestaña del navegador. |
+| `<body>` | Contenedor de todo el contenido visual de la web. |
+
+---
+
+## 📝 Elementos de Contenido y Semántica
+
+### Texto y Jerarquía
+* **Encabezados:** `<h1>` a `<h6>`. El `<h1>` es el más importante (solo uno por página).
+* **Párrafos:** `<p>` para bloques de texto.
+* **Formato:** `<b>` (negrita visual), `<em>` (énfasis/cursiva), `<span>` (estilo en línea).
+
+### Multimedia y Enlaces
+* **Imágenes:** `<img src="ruta.jpg" alt="descripción">`. El `alt` es vital para la accesibilidad.
+* **Enlaces:** `<a href="url">Texto</a>`. Usa `target="_blank"` para abrir en nueva pestaña.
+
+### Semántica (Layout)
+Ayudan a los buscadores (SEO) a entender tu página:
+* `<header>`: Encabezado de la página o sección.
+* `<nav>`: Bloque de navegación (menús).
+* `<main>`: Contenido principal único.
+* `<section>`: Secciones temáticas (usualmente inician con un `<h2>`).
+* `<aside>`: Contenido lateral o complementario.
+* `<footer>`: Pie de página.
+* `<div>`: Contenedor genérico (usar solo si no hay una opción semántica).
+ 
+---
+
+## 🔢 Listas
+* **Desordenadas (`<ul>`):** Elementos con viñetas.
+* **Ordenadas (`<ol>`):** Elementos numerados.
+* **Ítem (`<li>`):** Elemento individual dentro de cualquier lista.
+
+---
+
+## 📋 Formularios Pro
+Los formularios son la base de la interacción. Se recomienda envolverlos siempre en la etiqueta `<form>`.
+
+### El Elemento `<input>` (Atributos clave)
+* `type`: Define el comportamiento (`text`, `email`, `password`, `tel`, `date`, `radio`, `checkbox`, `submit`).
+* `placeholder`: Texto de ayuda temporal.
+* `required`: Obliga al usuario a llenar el campo.
+* `readonly`: El campo se ve pero no se puede editar.
+
+### Organización y Selección
+* `<label for="ID">`: Etiqueta vinculada a un input mediante su ID.
+* `<fieldset>` y `<legend>`: Agrupan y titulan campos relacionados.
+* `<select>` y `<option>`: Menús desplegables.
+* `<textarea>`: Para mensajes largos (usa `rows` y `cols`).
+* `<datalist>`: Lista de sugerencias mientras el usuario escribe en un input.
+
+---
+
+## 🚀 Ejemplo de Formulario Estructurado
+
+```html
+<form action="/enviar" method="POST">
+    <fieldset>
+        <legend>Contacto</legend>
+        
+        <label for="txt_nombre">Nombre:</label>
+        <input type="text" id="txt_nombre" name="nombre" placeholder="Tu nombre" required>
+
+        <label for="sel_pais">País:</label>
+        <select id="sel_pais">
+            <option value="pe">Perú</option>
+            <option value="mx" selected>México</option>
+            <option value="es">España</option>
+        </select>
+
+        <label for="txt_mensaje">Mensaje:</label>
+        <textarea id="txt_mensaje" rows="4"></textarea>
+
+        <input type="submit" value="Enviar Formulario">
+    </fieldset>
+</form>
+ 
+ ---
+
+## 📽️ Multimedia y Otros
+* `<video src="clip.mp4" controls></video>`: Inserta video con controles de reproducción.
+* `<audio src="podcast.mp3" controls></audio>`: Inserta un reproductor de audio.
+* `<iframe> </iframe>`: Incrusta contenido de otros sitios (Mapas, YouTube).
+
+ 
+## ♿ Accesibilidad y SEO Avanzado
+* `aria-label="Cerrar menú"`: Ayuda a lectores de pantalla a entender botones sin texto.
+* `<meta name="description" content="...">`: El texto que Google muestra en los resultados de búsqueda.
+* `<link rel="icon" href="favicon.ico">`: Define el icono de la pestaña del navegador.
+
+ 
+## 💡 Tips de Oro
+1.  **Validación:** Siempre pasa tu código por el [W3C Validator](https://validator.w3.org/) para asegurar que no tengas errores de sintaxis.
+2.  **Jerarquía:** Nunca te saltes niveles de encabezados (no pases de un `<h1>` a un `<h3>` sin un `<h2>` en medio).
+3.  **Rutas:** Recuerda que `./` es la carpeta actual y `../` es subir un nivel.
