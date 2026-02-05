@@ -1,0 +1,28 @@
+{
+  "name": "curso-node",
+  "version": "1.0.0",
+  "description": "Comenzando con node",
+  "keywords": [
+    "curso",
+    "programacion",
+    "node"
+  ],
+  "homepage": "https://github.com/Hector-0-0/Cursos-programacion#readme",
+  "bugs": {
+    "url": "https://github.com/Hector-0-0/Cursos-programacion/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hector-0-0/Cursos-programacion.git"
+  },
+  "license": "ISC",
+  "author": "Hector David Flores Sanchez",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "picocolors": "^1.1.1"
+  }
+}
