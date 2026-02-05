@@ -1,0 +1,97 @@
+# Curso de VS Code - Dalto
+
+## ¿Por qué usar un editor de código?
+
+Todo está hecho por código, y al momento de escribir este en un bloc de notas sería muy complicado. Es mucho mejor escribir código en un editor especializado. VS Code se considera uno de los mejores editores disponibles.
+
+### IDE vs Editor de Código
+
+- IDE: Es más pesado y está más focalizado hacia ciertos proyectos específicos
+- VS Code: Es un editor de código híbrido que combina lo mejor de ambos mundos
+
+---
+
+## Características principales de VS Code
+
+INTELLISENSE
+Ayuda a completar código automáticamente y muestra la descripción de ciertas funciones mientras escribes.
+
+EXTENSIBILIDAD
+Se puede extender agregando extensiones, haciéndolo más completo sin perder su característica de ser liviano.
+
+CONTROL DE VERSIONES
+VS Code tiene un sistema de control de versiones integrado y también se puede adaptar al uso de Git.
+
+DEBUGGING
+Trae integrada esta herramienta para poder analizar línea por línea el código, incluso al momento de que este se esté ejecutando. Sirve para corregir errores de manera eficiente.
+
+PERSONALIZACIÓN
+Se puede cambiar completamente su diseño según tus preferencias.
+
+---
+
+## Interfaz de VS Code - Activity Bar
+
+EXPLORER
+Ayuda a tener ordenados los archivos del proyecto.
+
+SEARCH
+Ayuda a buscar alguna palabra o frase en los archivos. También se puede reemplazar una palabra por otra.
+* Tip: Puedes usar expresiones regulares para buscar elementos compuestos.
+
+SOURCE CONTROL
+Herramienta para trabajar con el control de versiones en Git.
+
+RUN AND DEBUG
+Herramienta que ayuda a encontrar errores en el código. Permite ver lo que sucede con el código al ejecutarlo línea por línea.
+
+EXTENSIONS
+Permite instalar extensiones para ampliar la funcionalidad.
+
+MANAGE
+Ayuda a configurar VS Code para personalizarlo.
+
+ACCOUNTS
+Permite iniciar sesión con tu cuenta de GitHub para sincronizar la personalización de tu interfaz en otras computadoras.
+
+---
+
+## Atajos de teclado esenciales
+
+GESTIÓN DE ARCHIVOS
+Ctrl + S → Guarda el documento
+Ctrl + O → Abrir un archivo
+Ctrl + W / F4 → Cierra ventanas o pestañas
+Ctrl + Shift + N → Abre una nueva ventana de VS Code
+
+BÚSQUEDA Y REEMPLAZO
+Ctrl + F → Buscar en el documento actual
+Ctrl + H → Reemplazar en el documento actual
+Ctrl + Shift + F → Buscar en todos los documentos
+
+NAVEGACIÓN
+Ctrl + G → Ir a una línea específica (formato: :linea,columna)
+F12 → Abre la definición de cierta entidad
+Shift + F12 → Abre la definición en el mismo documento
+
+EDICIÓN DE CÓDIGO
+Shift + Alt + ↑/↓ → Copia la línea de código y la ubica
+Alt + ↑/↓ → Mueve la línea de código
+Ctrl + ] / [ → Tabula la línea de código hacia la derecha/izquierda
+Seleccionar + Ctrl + K + C → Convierte en comentario ciertas líneas de código
+
+CURSORES MÚLTIPLES
+Ctrl + Alt + ↑/↓ → Crea múltiples cursores
+Mantener Alt + Click → Crea múltiples cursores en líneas no consecutivas
+Seleccionar + Ctrl + Shift + L → Reemplazar en el documento de manera más rápida
+
+UTILIDADES ADICIONALES
+Ctrl + Shift + P → Abre la paleta de comandos
+Ctrl + Shift + ] / [ → Guardar/desplegar bloques de código
+Ctrl + K + Z → Modo enfocado (Zen Mode)
+Ctrl + Shift + M → Abre el panel de problemas
+Ctrl + ` → Abre/cierra la terminal integrada
+
+---
+
+Guía creada para dominar VS Code
