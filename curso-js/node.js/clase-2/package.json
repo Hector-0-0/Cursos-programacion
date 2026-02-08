@@ -4,10 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:2": "nodemon 2.routing.mjs",
+    "dev:3": "nodemon 3.express.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

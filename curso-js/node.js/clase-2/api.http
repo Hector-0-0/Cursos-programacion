@@ -1,0 +1,19 @@
+### Recuperar información de un pokemon específico
+# Esta petición GET activará el primer switch(url) de tu código 
+# y devolverá el contenido de ditto.json.
+GET http://localhost:3000/pokemon/ditto
+
+### Para crear un nuevo pokemon
+# Esta petición POST activará el evento req.on('data')
+# Enviará el cuerpo (body) al servidor para ser procesado.
+POST http://localhost:3000/pokemon
+Content-Type: application/json
+
+{
+    "name": "Pikachu",
+    "type": "Electric",
+    "abilities": [
+        "Static",
+        "Lightning Rod"
+    ]
+}
