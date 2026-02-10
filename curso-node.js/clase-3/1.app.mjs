@@ -20,7 +20,7 @@ app.disable("x-Powered-by");
  * LISTA BLANCA DE ORÍGENES (CORS):
  * Solo los dominios en este array podrán realizar peticiones a nuestra API.
  */
-const ACEPTED_ORIGINS = ["http://localhost:60458", "http://localhost:3000"];
+const ACEPTED_ORIGINS = ["http://localhost:60458", "http://localhost:3000", "http://localhost:8080"];
 
 /**
  * MIDDLEWARE DE CORS:

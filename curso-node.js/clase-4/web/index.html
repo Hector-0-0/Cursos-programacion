@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies API</title>
+    <style>
+        /* Estilos básicos para mostrar las películas en una cuadrícula flexible */
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        /* Estilo de la tarjeta de cada película */
+        article {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            width: 200px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        /* Aseguramos que las imágenes no se salgan de la tarjeta */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <script type="module">
+    /**
+     * Petición inicial (GET): Obtenemos todas las películas del servidor
+     */
+    fetch('http://localhost:3000/movies')
+        .then(res => res.json()) // Convertimos la respuesta a JSON
+        .then(movies => {
+            // Generamos el HTML dinámicamente usando .map()
+            const html = movies.map(movie => {
+                return `
+                    <article data-id="${movie.id}">
+                        <h2>${movie.title}</h2>
+                        <img src="${movie.poster}" alt="${movie.title} poster"> 
+                        <p>(${movie.year})</p>
+                        <button data-id="${movie.id}" class="delete-btn">Delete</button>
+                    </article>`;
+            }).join(''); // Unimos el array en un solo string
+
+            // Insertamos todas las películas en el body
+            document.querySelector('body').innerHTML = html;
+
+            /**
+             * Lógica de eliminación:
+             * Seleccionamos todos los botones creados y les añadimos el evento click
+             */
+            const botones = document.querySelectorAll('.delete-btn');
+            botones.forEach(boton => {
+                boton.addEventListener('click', eliminar);
+            });
+
+            /**
+             * Función para borrar una película
+             */
+            function eliminar(event) {
+                // Recuperamos el ID desde el atributo data del botón pulsado
+                const id = event.target.dataset.id;
+
+                // Enviamos la petición DELETE al servidor para el ID específico
+                fetch(`http://localhost:3000/movies/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(res => {
+                    /**
+                     * IMPORTANTE: Si el servidor responde con éxito (res.ok),
+                     * eliminamos la tarjeta del HTML sin necesidad de recargar la página.
+                     */
+                    if (res.ok) {
+                        const articleToRemove = document.querySelector(`article[data-id="${id}"]`);
+                        articleToRemove.remove();
+                        console.log(`Pelicula ${id} eliminada correctamente`);
+                    } else {
+                        console.error('El servidor no permitió eliminar la película');
+                    }
+                })
+                .catch(err => console.error('Error de red al intentar borrar:', err));
+            }
+        }
+    )
+    </script>
+</body>
+</html>
