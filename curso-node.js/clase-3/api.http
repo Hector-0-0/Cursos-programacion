@@ -1,13 +1,21 @@
 ### Recuperar todas las peliculas
+# Realiza una petición GET al endpoint raíz de movies.
+# El servidor debería responder con un status 200 y el array completo de películas en formato JSON.
 GET http://localhost:3000/movies
 
 ### Recuperar una pelicula por id
+# Se utiliza un parámetro de ruta (path parameter). 
+# El servidor usa 'req.params.id' para buscar la película específica en el JSON.
 GET http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
 
 ### Recuperar todas las peliculas por un genero
+# Se utiliza una Query String (?genre=Action).
+# El servidor extrae el valor con 'req.query.genre' y filtra el array usando '.filter()'.
 GET http://localhost:3000/movies?genre=Action
 
 ### Crear una pelicula
+# Envía una petición POST para crear un nuevo recurso.
+# Es obligatorio indicar el 'Content-Type: application/json' para que el middleware 'express.json()' pueda procesarlo.
 POST http://localhost:3000/movies
 Content-Type: application/json
 
@@ -22,6 +30,9 @@ Content-Type: application/json
 }
 
 ### Editar una pelicula
+# El método PATCH se usa para actualizaciones parciales.
+# Aquí solo estamos enviando el campo "rate". Gracias a 'movieSchema.partial()' en Zod, 
+# la validación no fallará aunque falten el resto de campos (título, año, etc.).
 PATCH http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
 Content-Type: application/json
 
