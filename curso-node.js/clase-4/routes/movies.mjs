@@ -1,76 +1,30 @@
-import Router from "express";
-import peliculas from "../movies.json" with { type: "json" };
-import { validateMovie, validatePartialMovie } from "../schemas/movies.mjs";
-import crypto from "node:crypto";
+//movies.mjs
 
+// Importamos el constructor Router de express para crear rutas modulares
+import Router from "express";
+// Importamos el controlador que contiene la lógica para cada ruta
+import { MovieController } from "../controllers/movies.mjs";
+
+// Inicializamos el router
 export const moviesRouter = Router();
 
-moviesRouter.get("/", (req, res) => {
-  const { genre } = req.query;
-  if (genre) {
-    const filteredMovies = peliculas.filter((movie) =>
-      movie.genre.some((g) => g.toLowerCase() === genre.toLowerCase()),
-    );
-    return res.json(filteredMovies);
-  }
-  res.json(peliculas);
-});
+/**
+ * Definición de los Endpoints para el recurso 'movies'
+ * Nota: Como este router se suele montar en '/movies' en la app principal,
+ * aquí usamos "/" para referirnos a la raíz de ese recurso.
+ */
 
-moviesRouter.get("/:id", (req, res) => {
-  const { id } = req.params;
-  const movie = peliculas.find((movie) => movie.id === id);
-  if (movie) return res.json(movie);
+// GET /movies - Recuperar todas las películas (con o sin filtro de género)
+moviesRouter.get("/", MovieController.getAll);
 
-  res.status(404).json({ message: "Movie not found" });
-});
+// GET /movies/:id - Recuperar una película específica por su ID
+moviesRouter.get("/:id", MovieController.getById);
 
-moviesRouter.post("/", (req, res) => {
-  const validationResult = validateMovie(req.body);
+// POST /movies - Crear una nueva película
+moviesRouter.post("/", MovieController.create);
 
-  if (!validationResult.success) {
-    return res.status(400).json({ errors: validationResult.error.errors });
-  }
+// PATCH /movies/:id - Actualizar parcialmente una película existente
+moviesRouter.patch("/:id", MovieController.update);
 
-  const newMovie = {
-    id: crypto.randomUUID(),
-    ...validationResult.data,
-  };
-
-  peliculas.push(newMovie);
-  res.status(201).json(newMovie);
-});
-
-moviesRouter.patch("/:id", (req, res) => {
-  const result = validatePartialMovie(req.body);
-
-  if (!result.success) {
-    return res.status(400).json({ errors: result.error.errors });
-  }
-
-  const { id } = req.params;
-  const movieIndex = peliculas.findIndex((movie) => movie.id === id);
-
-  if (movieIndex === -1) {
-    return res.status(404).json({ message: "Movie not found" });
-  }
-
-  const updatedMovie = {
-    ...peliculas[movieIndex],
-    ...result.data,
-  };
-
-  peliculas[movieIndex] = updatedMovie;
-  return res.json(updatedMovie);
-});
-
-moviesRouter.delete("/:id", (req, res) => {
-  const { id } = req.params;
-  const movieIndex = peliculas.findIndex((movie) => movie.id === id);
-
-  if (movieIndex === -1) {
-    return res.status(404).json({ message: "Movie not found" });
-  }
-
-  peliculas.splice(movieIndex, 1);
-  return res.status(204).send();
-});
+// DELETE /movies/:id - Eliminar una película por su ID
+moviesRouter.delete("/:id", MovieController.delete);
